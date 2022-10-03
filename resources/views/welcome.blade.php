@@ -7,11 +7,21 @@
         <title>Laravel</title>
     </head>
     <body>
+        <form action="tags" method="post">
+             @csrf
+             <input type="text" name="name">
+             <input type="submit" value="Agregar">
+        </form>
         <h4>Listado de etiquetas</h4>
         <table>
             @forelse ($tags as $tag)
                 <tr>
                     <td>
+                        <form action="tags/{{ $tag->id }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Eliminar">
+                        </form>
                         {{ $tag->name }}
                     </td>
                 </tr>
