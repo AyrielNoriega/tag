@@ -16,13 +16,16 @@
         <table>
             @forelse ($tags as $tag)
                 <tr>
+                    <td>{{ $tag->name }}</td>
+                    <td>{{ $tag->slug }}</td>
+
                     <td>
                         <form action="tags/{{ $tag->id }}" method="post">
                             @csrf
                             @method('DELETE')
                             <input type="submit" value="Eliminar">
                         </form>
-                        {{ $tag->name }}
+                        
                     </td>
                 </tr>
             @empty
